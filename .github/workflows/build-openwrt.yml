@@ -115,6 +115,32 @@ jobs:
       if: (!cancelled())
       run: df -hT
 
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@v1.0.0
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        
+    - name: Compile the firmware for N1
+      run: |
+        mkdir -p mknop
+        cp -f openwrt/bin/*.gz ./mknop
+        cd mknop
+        git clone https://github.com/tuanqing/mknop
+        mv *.gz mknop/openwrt
+        sudo ./gen_openwrt -d -k latest -m phicomm-n1
+          
+        devices=("phicomm-n1")
+        cd out
+        for x in ${devices[*]}; do
+          cd $x
+          filename=$(ls | awk -F '.img' '{print $1}')
+          gzip *.img
+          cd ../
+        done
+        cp -f out/phicomm-n1/*.* ../openwrt/bin
+
     - name: Upload bin directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
