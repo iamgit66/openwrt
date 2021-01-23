@@ -89,13 +89,6 @@ jobs:
       run: |
         git clone https://github.com/tuanqing/mknop
 
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
     - name: Download package
       id: package
       run: |
@@ -116,11 +109,7 @@ jobs:
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
 
-    - name: Check space usage
-      if: (!cancelled())
-      run: df -hT
-        
-    - name: Compile the firmware for N1
+   - name: Compile the firmware for N1
       run: |
         cp -f openwrt/bin/*.gz ./mknop/openwrt
         cd mknop
@@ -135,6 +124,10 @@ jobs:
           cd ../
         done
         cp -f out/phicomm-n1/*.* ../openwrt/bin
+
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
