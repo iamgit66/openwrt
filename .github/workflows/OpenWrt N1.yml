@@ -116,14 +116,16 @@ jobs:
     - name: Compile the firmware N1
       run: |
         cp -f openwrt/bin/targets/armvirt/64/*.gz ./mknop/openwrt
-        cd openwrt
-        ./make clean
-        cd ../
+        mkdir -p ./mknop/op
+        cp -f openwrt/bin/targets/armvirt/64/* ./mknop/op
+        rm -rf openwrt
         cd mknop
         sudo ./gen_openwrt -d -k latest -m phicomm-n1
+        cd ../
         mkdir -p openwrt/bin
-        cp out/phicomm-n1/* openwrt/bin
-
+        cp mknop/out/phicomm-n1/* openwrt/bin
+        cp mknop/op/* openwrt/bin
+ 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
