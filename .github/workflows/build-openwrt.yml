@@ -123,6 +123,7 @@ jobs:
     - name: Compile the firmware for N1
       run: |
         cp -f openwrt/bin/targets/*/*/*.gz ./mknop/openwrt
+        ./openwrt/make distclean
         cd mknop
         sudo ./gen_openwrt -d -k latest -m phicomm-n1
           
@@ -134,7 +135,7 @@ jobs:
           gzip *.img
           cd ../
         done
-        cp -f out/phicomm-n1/*.* ../openwrt/targets/armvirt/64
+
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
