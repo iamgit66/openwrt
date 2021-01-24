@@ -136,6 +136,11 @@ jobs:
           cd ../
         done
 
+      - name: Upload firmware @ phicomm n1
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ env.firmware_phicomm-n1 }}
+          path: mknop/out/phicomm-n1
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
