@@ -117,18 +117,10 @@ jobs:
       run: |
         cp -f openwrt/bin/targets/armvirt/64/*.gz ./mknop/openwrt
         cd openwrt
-        ./make dirclean
+        ./make clean
         cd ../
         cd mknop
         sudo ./gen_openwrt -d -k latest -m phicomm-n1
-        devices=("phicomm-n1")
-        cd out
-        for x in ${devices[*]}; do
-          cd $x
-          filename=$(ls | awk -F '.img' '{print $1}')
-          gzip *.img
-          cd ../
-        done
         mkdir -p openwrt/bin
         cp out/phicomm-n1/* openwrt/bin
 
