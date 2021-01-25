@@ -116,9 +116,7 @@ jobs:
     - name: Compile the firmware N1
       run: |
         ls -al openwrt/bin/targets/armvirt/64/
-        cp -f openwrt/bin/targets/armvirt/64/openwrt*.gz ./mknop/openwrt
-        mkdir -p ./mknop/op
-        cp -f openwrt/bin/targets/armvirt/64/* ./mknop/op
+        cp -f openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz mknop/openwrt/
         rm -rf openwrt
         cd mknop
         sudo ./gen_openwrt -d -k latest -m phicomm-n1
