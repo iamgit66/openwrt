@@ -135,10 +135,8 @@ jobs:
         cd ../
         cd out/phicomm-n1
         gzip *.img
-        cd ../
-        cd ../
-        ls -al mknop/out/phicomm-n1/
-        cp mknop/out/phicomm-n1/*.gz openwrt/bin/targets/armvirt/64/
+        cd ../../
+        mv mknop/out/phicomm-n1/*.gz openwrt/bin/targets/armvirt/64/
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
