@@ -120,11 +120,16 @@ jobs:
         cd mknop
         sudo ./gen_openwrt -d -k latest -m phicomm-n1
         cd ../
-        cp mknop/out/phicomm-n1/* openwrt/bin/targets/armvirt/64/
+        cd out/phicomm-n1
+        gzip *.img
+        cd ../
+        cd ../
+        ls -al mknop/out/phicomm-n1/
+        cp mknop/out/phicomm-n1/*.gz openwrt/bin/targets/armvirt/64/
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
-      if: steps.compile.outputs.status == 'success'
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
