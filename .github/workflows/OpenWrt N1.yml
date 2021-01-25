@@ -115,7 +115,8 @@ jobs:
 
     - name: Compile the firmware N1
       run: |
-        cp -f openwrt/bin/targets/armvirt/64/*.gz ./mknop/openwrt
+        ls -al openwrt/bin/targets/armvirt/64/
+        cp -f openwrt/bin/targets/armvirt/64/openwrt*.gz ./mknop/openwrt
         mkdir -p ./mknop/op
         cp -f openwrt/bin/targets/armvirt/64/* ./mknop/op
         rm -rf openwrt
