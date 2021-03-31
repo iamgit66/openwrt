@@ -129,6 +129,7 @@ jobs:
         gzip *.img
         cd ../../../
         mv mknop/out/phicomm-n1/*.gz openwrt/bin/targets/armvirt/64/
+        rm -f openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz
 
     - name: Upload bin directory
       uses: actions/upload-artifact@main
