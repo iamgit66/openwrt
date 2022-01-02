@@ -20,8 +20,8 @@ sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.
 cd package/lean/
 git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 git clone https://github.com/iamgit66/luci-app-poweroff.git
-git clone https://github.com/iamgit66/openwrt-passwall.git
-# git clone https://github.com/xiaorouji/openwrt-passwall.git
+# git clone https://github.com/iamgit66/openwrt-passwall.git
+git clone https://github.com/xiaorouji/openwrt-passwall.git
 git clone https://github.com/iamgit66/openwrt-packages.git
 # git clone https://github.com/kenzok8/openwrt-packages.git
 git clone https://github.com/tuanqing/install-program
