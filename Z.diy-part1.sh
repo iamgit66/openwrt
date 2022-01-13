@@ -14,15 +14,17 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+# sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # Add app
 cd package/lean/
-git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
+#git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git
 git clone https://github.com/iamgit66/luci-app-poweroff.git
-git clone https://github.com/iamgit66/openwrt-passwall.git
+# git clone https://github.com/iamgit66/openwrt-passwall.git
 # git clone https://github.com/xiaorouji/openwrt-passwall.git
-git clone https://github.com/iamgit66/openwrt-packages.git
+# git clone https://github.com/iamgit66/openwrt-packages.git
 # git clone https://github.com/kenzok8/openwrt-packages.git
 git clone https://github.com/tuanqing/install-program
 #     git clone https://github.com/tuanqing/openwrt-mentohust
@@ -32,4 +34,4 @@ git clone https://github.com/jerrykuku/luci-app-ttnode
 git clone https://github.com/jerrykuku/luci-app-argon-config
 git clone https://github.com/lisaac/luci-lib-docker
 git clone https://github.com/lisaac/luci-app-dockerman
-git clone https://github.com/fw876/helloworld.git
+# git clone https://github.com/fw876/helloworld.git
