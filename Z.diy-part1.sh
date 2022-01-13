@@ -26,12 +26,12 @@ git clone https://github.com/iamgit66/luci-app-poweroff.git
 # git clone https://github.com/xiaorouji/openwrt-passwall.git
 # git clone https://github.com/iamgit66/openwrt-packages.git
 # git clone https://github.com/kenzok8/openwrt-packages.git
-git clone https://github.com/tuanqing/install-program
+# git clone https://github.com/tuanqing/install-program
 #     git clone https://github.com/tuanqing/openwrt-mentohust
 #     git clone https://github.com/tuanqing/luci-app-mentohust
-git clone https://github.com/jerrykuku/luci-theme-argon -b 18.06
-git clone https://github.com/jerrykuku/luci-app-ttnode
-git clone https://github.com/jerrykuku/luci-app-argon-config
-git clone https://github.com/lisaac/luci-lib-docker
-git clone https://github.com/lisaac/luci-app-dockerman
+# git clone https://github.com/jerrykuku/luci-theme-argon -b 18.06
+# git clone https://github.com/jerrykuku/luci-app-ttnode
+# git clone https://github.com/jerrykuku/luci-app-argon-config
+# git clone https://github.com/lisaac/luci-lib-docker
+# git clone https://github.com/lisaac/luci-app-dockerman
 # git clone https://github.com/fw876/helloworld.git
